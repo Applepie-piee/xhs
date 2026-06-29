@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.applepie</groupId>
+        <artifactId>applepie-framework</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <packaging>jar</packaging>
+
+    <artifactId>applepie-spring-boot-starter-biz-operationlog</artifactId>
+
+    <name>${project.artifactId}</name>
+    <description>接口日志组件</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- 自定义 Jackson 封装组件 -->
+        <dependency>
+            <groupId>com.applepie</groupId>
+            <artifactId>applepie-spring-boot-starter-jackson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.applepie</groupId>
+            <artifactId>applepie-common</artifactId>
+        </dependency>
+
+        <!-- AOP 切面 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
