@@ -1,4 +1,4 @@
-package com.applepie.xhsAuth.config;
+package com.applepie.jackson.config;
 
 import com.applepie.jackson.constant.DateConstants;
 import com.applepie.jackson.utils.JsonUtil;
