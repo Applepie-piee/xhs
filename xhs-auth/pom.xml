@@ -18,6 +18,25 @@
     <description>小哈书：认证服务（负责处理用户登录、注册、账号注销等功能）</description>
 
     <dependencies>
+        <!-- Nacos 配置中心 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <!-- 开启 Bootstrap 上下文（Spring Cloud 2022.x 必须） -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <!-- 服务注册发现 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.boot</groupId>-->
+<!--            <artifactId>nacos-config-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
         <!-- 阿里云短信发送 -->
         <dependency>
             <groupId>com.aliyun</groupId>
