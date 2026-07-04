@@ -71,4 +71,8 @@ public class TestController {
         alarm.send("man,what can i say?Manba out!");
         return "alarm success";
     }
+    @GetMapping("/test3")
+    public String test3() {
+        return "hello world";
+    }
 }

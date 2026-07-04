@@ -24,7 +24,6 @@ import java.time.LocalTime;
 import java.time.YearMonth;
 import java.util.TimeZone;
 
-@Configuration
 public class JacksonConfig {
 
     @Bean

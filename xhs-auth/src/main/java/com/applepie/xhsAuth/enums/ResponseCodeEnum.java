@@ -14,6 +14,9 @@ public enum ResponseCodeEnum implements BaseExceptionInterface {
     PARAM_IS_NULL("AUTH-10002", "验证码为空哦喵~"),
     VERIFICATION_CODE_SEND_FREQUENTLY("AUTH-20000", "请求太频繁，请3分钟后再试"),
     VERIFICATION_CODE_ERROR("AUTH-20001", "验证码错误了喵~"),
+    LOGIN_TYPE_ERROR("AUTH-20002", "登录类型错误了喵"),
+    USER_NOT_FOUND("AUTH-20003", "该用户不存在哦喵"),
+    PHONE_OR_PASSWORD_ERROR("AUTH-20004", "手机号或密码错误喵"),
     ;
 
     // ----------- 业务异常状态码 -----------

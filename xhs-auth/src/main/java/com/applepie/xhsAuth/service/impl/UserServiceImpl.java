@@ -6,29 +6,35 @@ import com.applepie.common.enums.DeletedEnum;
 import com.applepie.common.enums.StatusEnum;
 import com.applepie.common.exception.BizException;
 import com.applepie.common.response.Response;
+import com.applepie.framework.biz.operationlog.log.LogRecord;
+import com.applepie.framework.biz.context.holder.LoginUserContextHolder;
 import com.applepie.jackson.utils.JsonUtil;
 import com.applepie.xhsAuth.constant.RedisKeyConstants;
 import com.applepie.xhsAuth.constant.RoleConstants;
+import com.applepie.xhsAuth.domain.dataobject.RoleDO;
 import com.applepie.xhsAuth.domain.dataobject.UserDO;
 import com.applepie.xhsAuth.domain.dataobject.UserRoleRelDO;
+import com.applepie.xhsAuth.domain.mapper.RoleDOMapper;
 import com.applepie.xhsAuth.domain.mapper.UserDOMapper;
 import com.applepie.xhsAuth.domain.mapper.UserRoleRelDOMapper;
 import com.applepie.xhsAuth.enums.LoginTypeEnum;
 import com.applepie.xhsAuth.enums.ResponseCodeEnum;
+import com.applepie.xhsAuth.model.vo.user.UpdatePasswordReqVO;
 import com.applepie.xhsAuth.model.vo.user.UserLoginReqVO;
 import com.applepie.xhsAuth.service.UserService;
 import com.google.common.base.Preconditions;
 
-import com.google.common.collect.Lists;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,11 +51,15 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserDOMapper userDOMapper;
     @Resource
+    private RoleDOMapper roleDOMapper;
+    @Resource
     private RedisTemplate<String, Object> redisTemplate;
     @Resource
     private UserRoleRelDOMapper userRoleRelDOMapper;
     @Resource
     private TransactionTemplate transactionTemplate;
+    @Resource
+    private PasswordEncoder passwordEncoder;
 
     /**
      * 登录与注册
@@ -100,8 +110,27 @@ public class UserServiceImpl implements UserService {
                 }
                 break;
             case PASSWORD: // 密码登录
-                // todo
+                String password = userLoginReqVO.getPassword();
+                // 根据手机号查询
+                UserDO userDO1 = userDOMapper.selectByPhone(phone);
 
+                // 判断该手机号是否注册
+                if (Objects.isNull(userDO1)) {
+                    throw new BizException(ResponseCodeEnum.USER_NOT_FOUND);
+                }
+
+                // 拿到密文密码
+                String encodePassword = userDO1.getPassword();
+
+                // 匹配密码是否一致
+                boolean isPasswordCorrect = passwordEncoder.matches(password, encodePassword);
+
+                // 如果不正确，则抛出业务异常，提示用户名或者密码不正确
+                if (!isPasswordCorrect) {
+                    throw new BizException(ResponseCodeEnum.PHONE_OR_PASSWORD_ERROR);
+                }
+
+                userId = userDO1.getId();
                 break;
             default:
                 break;
@@ -154,10 +183,12 @@ public class UserServiceImpl implements UserService {
                         .build();
                 userRoleRelDOMapper.insert(userRoleDO);
 
+                RoleDO roleDO = roleDOMapper.selectByPrimaryKey(RoleConstants.COMMON_USER_ROLE_ID);
+
                 // 将该用户的角色 ID 存入 Redis 中
-                List<Long> roles = Lists.newArrayList();
-                roles.add(RoleConstants.COMMON_USER_ROLE_ID);
-                String userRolesKey = RedisKeyConstants.buildUserRoleKey(phone);
+                List<String> roles = new ArrayList<>(1);
+                roles.add(roleDO.getRoleKey());
+                String userRolesKey = RedisKeyConstants.buildUserRoleKey(userId);
                 redisTemplate.opsForValue().set(userRolesKey, JsonUtil.toJsonString(roles));
 
                 return userId;
@@ -167,5 +198,48 @@ public class UserServiceImpl implements UserService {
                 return null;
             }
         });
+    }
+
+    /**
+     * 退出登录
+     *
+     * @return
+     */
+    @Override
+    @LogRecord(value = "用户退出登录")
+    public Response<?> logout (){
+        Long userId = LoginUserContextHolder.getUserId();
+        log.info("==> 用户退出登录, userId: {}", userId);
+        // 退出登录 (指定用户 ID)
+        StpUtil.logout(userId);
+
+        return Response.success();
+    }
+
+    /**
+     * 修改密码
+     *
+     * @param updatePasswordReqVO
+     * @return
+     */
+    @Override
+    public Response<?> updatePassword(UpdatePasswordReqVO updatePasswordReqVO) {
+        // 新密码
+        String newPassword = updatePasswordReqVO.getNewPassword();
+        // 密码加密
+        String encodePassword = passwordEncoder.encode(newPassword);
+
+        // 获取当前请求对应的用户 ID
+        Long userId = LoginUserContextHolder.getUserId();
+
+        UserDO userDO = UserDO.builder()
+                .id(userId)
+                .password(encodePassword)
+                .updateTime(LocalDateTime.now())
+                .build();
+        // 更新密码
+        userDOMapper.updateByPrimaryKeySelective(userDO);
+
+        return Response.success();
     }
 }
