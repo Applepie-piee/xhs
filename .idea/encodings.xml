@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/appleipie-framework/applepie-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/appleipie-framework/applepie-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/appleipie-framework/applepie-spring-boot-starter-biz-context/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/appleipie-framework/applepie-spring-boot-starter-biz-context/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/appleipie-framework/applepie-spring-boot-starter-biz-operationlog/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/appleipie-framework/applepie-spring-boot-starter-biz-operationlog/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/appleipie-framework/applepie-spring-boot-starter-jackson/src/main/java" charset="UTF-8" />
@@ -13,5 +15,19 @@
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xhs-auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xhs-auth/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-oss/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-oss/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-oss/xhs-oss-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-oss/xhs-oss-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-oss/xhs-oss-biz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-oss/xhs-oss-biz/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-user/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-user/xhs-user-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-user/xhs-user-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-user/xhs-user-biz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-user/xhs-user-biz/src/main/resources" charset="UTF-8" />
   </component>
 </project>

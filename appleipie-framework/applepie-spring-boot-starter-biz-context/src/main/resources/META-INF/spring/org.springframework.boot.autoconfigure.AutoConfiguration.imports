@@ -1,1 +1,2 @@
 com.applepie.framework.biz.context.config.ContextAutoConfiguration
+com.applepie.framework.biz.context.config.FeignContextAutoConfiguration

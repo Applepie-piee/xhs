@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.applepie</groupId>
+        <artifactId>xhs</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>xhs-user</artifactId>
+    <!-- 多模块项目需要配置打包方式为 pom -->
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <description>用户服务</description>
+    <modules>
+        <module>xhs-user-biz</module>
+        <module>xhs-user-api</module>
+    </modules>
+
+    <dependencies>
+    </dependencies>
+</project>
