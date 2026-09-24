@@ -15,8 +15,26 @@
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xhs-auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xhs-auth/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-distributed-id-generator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-distributed-id-generator/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-distributed-id-generator/xhs-distributed-id-generator-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-distributed-id-generator/xhs-distributed-id-generator-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-distributed-id-generator/xhs-distributed-id-generator-biz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-distributed-id-generator/xhs-distributed-id-generator-biz/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xhs-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xhs-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-kv/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-kv/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-kv/xhs-kv-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-kv/xhs-kv-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-kv/xhs-kv-biz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-kv/xhs-kv-biz/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-note/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-note/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-note/xhs-note-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-note/xhs-note-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-note/xhs-note-biz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xhs-note/xhs-note-biz/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xhs-oss/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xhs-oss/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xhs-oss/xhs-oss-api/src/main/java" charset="UTF-8" />

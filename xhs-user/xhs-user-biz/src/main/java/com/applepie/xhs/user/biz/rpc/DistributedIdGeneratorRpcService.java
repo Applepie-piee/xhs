@@ -1,0 +1,46 @@
+package com.applepie.xhs.user.biz.rpc;
+
+import com.applepie.xhs.distributed.id.generator.api.DistributedIdGeneratorFeignApi;
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author: 苹果派派
+ * @date: 2026/7/25 02:00
+ * @version: v1.0.0
+ * @description: 分布式 ID 生成服务
+ **/
+@Component
+public class DistributedIdGeneratorRpcService {
+
+    @Resource
+    private DistributedIdGeneratorFeignApi distributedIdGeneratorFeignApi;
+
+    /**
+     * Leaf 号段模式：小哈书 ID 业务标识
+     */
+    private static final String BIZ_TAG_XIAOHASHU_ID = "leaf-segment-xhs-id";
+
+    /**
+     * Leaf 号段模式：用户 ID 业务标识
+     */
+    private static final String BIZ_TAG_USER_ID = "leaf-segment-user-id";
+
+    /**
+     * 调用分布式 ID 生成服务生成小哈书 ID
+     *
+     * @return
+     */
+    public String getXiaohashuId() {
+        return distributedIdGeneratorFeignApi.getSegmentId(BIZ_TAG_XIAOHASHU_ID);
+    }
+    /**
+     * 调用分布式 ID 生成服务用户 ID
+     *
+     * @return
+     */
+    public String getUserId() {
+        return distributedIdGeneratorFeignApi.getSegmentId(BIZ_TAG_USER_ID);
+    }
+}
+
